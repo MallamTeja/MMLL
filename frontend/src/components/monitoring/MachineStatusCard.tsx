@@ -44,12 +44,12 @@ const StatItem: React.FC<{ label: string; value: React.ReactNode; icon?: React.R
   icon,
 }) => (
   <Box sx={{ mb: 2 }}>
-    <Typography variant="caption" color="text.secondary" display="block">
+    <Box component="span" sx={{ fontSize: '0.75rem', color: 'text.secondary', display: 'block' }}>
       {label}
-    </Typography>
+    </Box>
     <Box display="flex" alignItems="center">
       {icon && React.cloneElement(icon, { sx: { mr: 1, color: 'text.secondary', fontSize: '1rem' } })}
-      <Typography variant="body1">{value}</Typography>
+      <Box component="span">{value}</Box>
     </Box>
   </Box>
 );
@@ -106,12 +106,12 @@ const MachineStatusCard: React.FC<StatusCardProps> = ({
           {uptime && (
             <Box mb={2}>
               <Box display="flex" justifyContent="space-between" mb={0.5}>
-                <Typography variant="caption" color="text.secondary">
+                <Box component="span" sx={{ fontSize: '0.75rem', color: 'text.secondary' }}>
                   Uptime
-                </Typography>
-                <Typography variant="caption" fontWeight="medium">
+                </Box>
+                <Box component="span" sx={{ fontSize: '0.75rem', fontWeight: 'medium' }}>
                   {uptime}
-                </Typography>
+                </Box>
               </Box>
               <LinearProgress 
                 variant="determinate" 
@@ -131,12 +131,12 @@ const MachineStatusCard: React.FC<StatusCardProps> = ({
           {efficiency !== undefined && (
             <Box mb={2}>
               <Box display="flex" justifyContent="space-between" mb={0.5}>
-                <Typography variant="caption" color="text.secondary">
+                <Box component="span" sx={{ fontSize: '0.75rem', color: 'text.secondary' }}>
                   Efficiency
-                </Typography>
-                <Typography variant="caption" fontWeight="medium">
+                </Box>
+                <Box component="span" sx={{ fontSize: '0.75rem', fontWeight: 'medium' }}>
                   {efficiency}%
-                </Typography>
+                </Box>
               </Box>
               <LinearProgress 
                 variant="determinate" 
