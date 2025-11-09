@@ -1,11 +1,10 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from app.core.config import settings
+# Use SQLite for quick startup instead of PostgreSQL
+SQLALCHEMY_DATABASE_URL = "sqlite:///./toolwear.db"
 
-engine = create_engine(settings.SQLALCHEMY_DATABASE_URI)
+engine = create_engine(
+    SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
+)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
-# Ensure the database URL is set up
-if not settings.SQLALCHEMY_DATABASE_URI:
-    raise ValueError("Database URL is not configured. Please check your settings.")

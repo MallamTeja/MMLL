@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Response
-from prometheus_client import generate_latest, CONTENT_TYPE_LINUX
+from prometheus_client import generate_latest, CONTENT_TYPE_LATEST
 import logging
 
 logger = logging.getLogger(__name__)
@@ -12,7 +12,7 @@ async def metrics():
     try:
         return Response(
             content=generate_latest(),
-            media_type=CONTENT_TYPE_LINUX
+            media_type=CONTENT_TYPE_LATEST
         )
     except Exception as e:
         logger.error(f"Error generating metrics: {str(e)}")
