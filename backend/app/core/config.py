@@ -1,7 +1,6 @@
 from typing import Any, Dict, List, Optional, Union
 from pathlib import Path
-from pydantic import AnyHttpUrl, EmailStr, validator, HttpUrl
-from pydantic_settings import BaseSettings
+from pydantic import AnyHttpUrl, EmailStr, validator, HttpUrl, BaseSettings
 
 class Settings(BaseSettings):
     # API settings

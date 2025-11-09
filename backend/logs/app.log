@@ -10,3 +10,12 @@
 2025-11-09 08:30:21,311 - root - WARNING - Skipping ML-heavy routes (prediction/models/enhanced_prediction/websocket): unexpected indent (prediction_service.py, line 196)
 2025-11-09 08:30:23,668 - root - INFO - Request: GET https://localhost:8000/
 2025-11-09 08:30:23,669 - root - INFO - Response: GET https://localhost:8000/ - 200 (0.00s)
+2025-11-09 09:24:46,357 - root - WARNING - Skipping ML-heavy routes (prediction/models/enhanced_prediction/websocket): unexpected indent (prediction_service.py, line 196)
+2025-11-09 09:24:51,238 - root - INFO - Request: GET https://localhost:8000/
+2025-11-09 09:24:51,238 - root - INFO - Response: GET https://localhost:8000/ - 200 (0.00s)
+2025-11-09 09:25:57,556 - root - INFO - Request: GET http://localhost:8000/docs
+2025-11-09 09:25:57,557 - root - INFO - Response: GET http://localhost:8000/docs - 200 (0.00s)
+2025-11-09 09:26:22,202 - root - INFO - Request: GET https://localhost:8000/docs?id=6f73f896-7bd1-4785-abaf-b334236fcb27&vscodeBrowserReqId=1762680383001
+2025-11-09 09:26:22,202 - root - INFO - Response: GET https://localhost:8000/docs?id=6f73f896-7bd1-4785-abaf-b334236fcb27&vscodeBrowserReqId=1762680383001 - 200 (0.00s)
+2025-11-09 09:37:40,428 - root - WARNING - Skipping ML-heavy routes (prediction/models/enhanced_prediction/websocket): unexpected indent (prediction_service.py, line 196)
+2025-11-09 09:38:04,063 - root - WARNING - Skipping ML-heavy routes (prediction/models/enhanced_prediction/websocket): unexpected indent (prediction_service.py, line 196)
