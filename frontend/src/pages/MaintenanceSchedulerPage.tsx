@@ -53,18 +53,18 @@ const MaintenanceSchedulerPage: React.FC = () => {
   };
 
   return (
-    <Box sx={{ p: 3 }}>
-      <Typography variant="h4" gutterBottom>
-        Maintenance Scheduler
-      </Typography>
-      
-      <Paper sx={{ p: 3, mb: 3 }}>
-        <Typography variant="h6" gutterBottom>
-          Schedule New Maintenance
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <Box sx={{ p: 3 }}>
+        <Typography variant="h4" gutterBottom>
+          Maintenance Scheduler
         </Typography>
-        <Grid container spacing={2} alignItems="center">
-          <Grid item xs={12} md={3}>
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
+        
+        <Paper sx={{ p: 3, mb: 3 }}>
+          <Typography variant="h6" gutterBottom>
+            Schedule New Maintenance
+          </Typography>
+          <Grid container spacing={2} alignItems="center">
+            <Grid item xs={12} md={3}>
               <DatePicker
                 label="Maintenance Date"
                 value={date}
@@ -76,93 +76,93 @@ const MaintenanceSchedulerPage: React.FC = () => {
                   }
                 }}
               />
-            </LocalizationProvider>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <TextField
+                fullWidth
+                label="Description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                placeholder="Enter maintenance description..."
+              />
+            </Grid>
+            <Grid item xs={12} md={3}>
+              <Button
+                fullWidth
+                variant="contained"
+                color="primary"
+                onClick={handleSchedule}
+                disabled={!date || !description}
+                sx={{ height: '56px' }}
+              >
+                Schedule Maintenance
+              </Button>
+            </Grid>
           </Grid>
-          <Grid item xs={12} md={6}>
-            <TextField
-              fullWidth
-              label="Description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              placeholder="Enter maintenance description..."
-            />
-          </Grid>
-          <Grid item xs={12} md={3}>
-            <Button
-              fullWidth
-              variant="contained"
-              color="primary"
-              onClick={handleSchedule}
-              disabled={!date || !description}
-              sx={{ height: '56px' }}
-            >
-              Schedule Maintenance
-            </Button>
-          </Grid>
-        </Grid>
-      </Paper>
+        </Paper>
 
-      <Paper sx={{ p: 3 }}>
-        <Typography variant="h6" gutterBottom>
-          Upcoming Maintenance Tasks
-        </Typography>
-        <TableContainer>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Date</TableCell>
-                <TableCell>Machine</TableCell>
-                <TableCell>Description</TableCell>
-                <TableCell>Status</TableCell>
-                <TableCell>Actions</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {maintenanceTasks.map((task) => (
-                <TableRow key={task.id}>
-                  <TableCell>{task.date}</TableCell>
-                  <TableCell>{task.machine}</TableCell>
-                  <TableCell>{task.description}</TableCell>
-                  <TableCell>
-                    <Box
-                      sx={{
-                        color: 'white',
-                        bgcolor: 
-                          task.status === 'Completed' ? 'success.main' :
-                          task.status === 'In Progress' ? 'warning.main' : 'info.main',
-                        px: 1,
-                        borderRadius: 1,
-                        display: 'inline-block'
-                      }}
-                    >
-                      {task.status}
-                    </Box>
-                  </TableCell>
-                  <TableCell>
-                    {task.status !== 'Completed' && (
-                      <Button
-                        variant="outlined"
-                        size="small"
-                        color="success"
-                        onClick={() => {
-                          // Update task status
-                          const updatedTasks = maintenanceTasks.map(t => 
-                            t.id === task.id ? { ...t, status: 'Completed' } : t
-                          );
-                          setMaintenanceTasks(updatedTasks);
+        <Paper sx={{ p: 3 }}>
+          <Typography variant="h6" gutterBottom>
+            Upcoming Maintenance Tasks
+          </Typography>
+          <TableContainer>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Date</TableCell>
+                  <TableCell>Machine</TableCell>
+                  <TableCell>Description</TableCell>
+                  <TableCell>Status</TableCell>
+                  <TableCell>Actions</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {maintenanceTasks.map((task) => (
+                  <TableRow key={task.id}>
+                    <TableCell>{task.date}</TableCell>
+                    <TableCell>{task.machine}</TableCell>
+                    <TableCell>{task.description}</TableCell>
+                    <TableCell>
+                      <Box
+                        sx={{
+                          color: 'white',
+                          bgcolor: 
+                            task.status === 'Completed' ? 'success.main' :
+                            task.status === 'In Progress' ? 'warning.main' : 'info.main',
+                          px: 1,
+                          borderRadius: 1,
+                          display: 'inline-block'
                         }}
                       >
-                        Mark Complete
-                      </Button>
-                    )}
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Paper>
-    </Box>
+                        {task.status}
+                      </Box>
+                    </TableCell>
+                    <TableCell>
+                      {task.status !== 'Completed' && (
+                        <Button
+                          variant="outlined"
+                          size="small"
+                          color="success"
+                          onClick={() => {
+                            // Update task status
+                            const updatedTasks = maintenanceTasks.map(t => 
+                              t.id === task.id ? { ...t, status: 'Completed' } : t
+                            );
+                            setMaintenanceTasks(updatedTasks);
+                          }}
+                        >
+                          Mark Complete
+                        </Button>
+                      )}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Paper>
+      </Box>
+    </LocalizationProvider>
   );
 };
 

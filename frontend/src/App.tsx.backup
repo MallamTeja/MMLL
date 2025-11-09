@@ -64,6 +64,27 @@ const theme = createTheme({
   },
 });
 
+// Create theme
+const theme = createTheme({
+
+function App() {
+  return (
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Router>
+          <AuthProvider>
+            <Routes>
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/*" element={<AppRoutes />} />
+            </Routes>
+          </AuthProvider>
+        </Router>
+      </ThemeProvider>
+    </Provider>
+  );
+}
+
 // Separate component for protected routes
 const AppRoutes: React.FC = () => {
   const { isAuthenticated, isLoading } = useAuth();
@@ -96,23 +117,5 @@ const AppRoutes: React.FC = () => {
     </Routes>
   );
 };
-
-function App() {
-  return (
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Router>
-          <AuthProvider>
-            <Routes>
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/*" element={<AppRoutes />} />
-            </Routes>
-          </AuthProvider>
-        </Router>
-      </ThemeProvider>
-    </Provider>
-  );
-}
 
 export default App;

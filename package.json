@@ -1,8 +1,41 @@
 {
-  "dependencies": {
-    "@chakra-ui/form-control": "^2.2.0",
-    "@chakra-ui/table": "^2.1.0",
-    "@chakra-ui/toast": "^7.0.2",
-    "@mui/material": "^7.0.0-rc.0"
-  }
+  "name": "mmll",
+  "version": "1.0.0",
+  "description": "Machine Learning Lifecycle Management Platform",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && uvicorn app.main:app --reload --host 0.0.0.0 --port 8000",
+    "dev:frontend": "cd frontend && npm start",
+    "build": "cd frontend && npm run build",
+    "test": "concurrently \"npm run test:backend\" \"npm run test:frontend\"",
+    "test:backend": "cd backend && pytest",
+    "test:frontend": "cd frontend && npm test -- --watchAll=false",
+    "install:all": "npm install && cd backend && pip install -r requirements.txt && cd ../frontend && npm install",
+    "clean": "rm -rf node_modules frontend/node_modules backend/__pycache__ frontend/build",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up",
+    "docker:down": "docker-compose down"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MallamTeja/MMLL.git"
+  },
+  "author": "MallamTeja",
+  "license": "MIT",
+  "keywords": [
+    "machine-learning",
+    "mlops",
+    "fastapi",
+    "react",
+    "typescript",
+    "python"
+  ]
 }
