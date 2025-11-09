@@ -84,6 +84,27 @@ npm start
 ```
 
 ## 🚀 Usage
+ 
+### Quick start (one-command)
+
+If you want a single command to install all dependencies and another single command to start both backend and frontend in development, you can use the npm scripts added at the repository root.
+
+- Install everything (root deps, Python backend deps, frontend deps):
+
+```bash
+npm run bootstrap
+```
+
+- Start the whole application (runs install then starts backend + frontend concurrently):
+
+```bash
+npm start
+```
+
+Notes:
+- These scripts assume you have Node.js (>=16), npm, and Python 3 (with pip) installed on your machine. On Linux use `python3` which is used by the install script.
+- As an alternative you can start everything with Docker Compose: `npm run docker:up` (requires Docker).
+
 
 1. **Access the Application**
    - Frontend: http://localhost:3000

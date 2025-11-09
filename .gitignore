@@ -337,11 +337,11 @@ local_config.py
 local_config.js
 config_local.json
 
-# Package managers
-package-lock.json
-yarn.lock
-poetry.lock
-Pipfile.lock
+# Package managers (keep lockfiles under version control)
+# package-lock.json
+# yarn.lock
+# poetry.lock
+# Pipfile.lock
 
 # Build artifacts
 *.whl
