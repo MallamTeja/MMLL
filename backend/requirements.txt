@@ -43,5 +43,5 @@ httpx==0.24.1
 fastapi-cors==0.0.6
 
 # Additional utilities
-requests==2.31.0
+requests==2.32.4
 aiofiles==23.2.1
