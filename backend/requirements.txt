@@ -15,7 +15,7 @@ python-jose[cryptography]==3.5.0
 passlib[bcrypt]==1.7.4
 
 # Environment and configuration
-python-dotenv==1.0.0
+python-dotenv==1.2.1
 
 # Data processing and analysis
 pandas==2.0.1
