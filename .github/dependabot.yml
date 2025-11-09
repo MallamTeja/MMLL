@@ -39,10 +39,6 @@ updates:
       include: "scope"
     reviewers:
       - "MallamTeja"
-    ignore:
-      # Ignore major version updates for specific packages if needed
-      # Example: - dependency-name: "react"
-      #           update-types: ["version-update:semver-major"]
 
   # Root-level npm dependencies (package.json)
   - package-ecosystem: "npm"
