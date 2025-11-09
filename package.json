@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@chakra-ui/form-control": "^2.2.0",
+    "@chakra-ui/table": "^2.1.0",
+    "@chakra-ui/toast": "^7.0.2",
+    "@mui/material": "^7.0.0-rc.0"
+  }
+}
