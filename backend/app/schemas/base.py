@@ -30,7 +30,7 @@ class ModelStatus(str, Enum):
 class ModelBase(BaseModel):
     """Base model with common configuration for all schemas"""
     class Config:
-        orm_mode = True
+        from_attributes = True
         use_enum_values = True
         json_encoders = {
             datetime: lambda v: v.isoformat() if v else None

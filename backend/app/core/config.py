@@ -1,5 +1,7 @@
 from typing import Any, Dict, List, Optional, Union
-from pydantic import AnyHttpUrl, BaseSettings, EmailStr, validator, HttpUrl
+from pathlib import Path
+from pydantic import AnyHttpUrl, EmailStr, validator, HttpUrl
+from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
     # API settings
@@ -44,8 +46,8 @@ class Settings(BaseSettings):
     # File Uploads
     UPLOAD_DIR: str = "uploads"  # Relative to project root
     MAX_UPLOAD_SIZE: int = 10 * 1024 * 1024  # 10MB
-    ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/tiff"]
-    ALLOWED_CSV_TYPES = ["text/csv", "application/vnd.ms-excel"]
+    ALLOWED_IMAGE_TYPES: List[str] = ["image/jpeg", "image/png", "image/tiff"]
+    ALLOWED_CSV_TYPES: List[str] = ["text/csv", "application/vnd.ms-excel"]
     
     @validator("UPLOAD_DIR", pre=True)
     def create_upload_dir(cls, v: str) -> str:

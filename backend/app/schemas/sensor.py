@@ -31,7 +31,7 @@ class SensorDataInDBBase(SensorDataBase):
     id: int
     
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class SensorData(SensorDataInDBBase):
     """Schema for returning sensor data"""

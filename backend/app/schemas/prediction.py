@@ -62,7 +62,7 @@ class PredictionInDB(PredictionBase):
     updated_at: datetime
     
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 # Response schemas
 class PredictionResponse(ResponseBase):

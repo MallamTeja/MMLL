@@ -25,7 +25,7 @@ class MaintenanceTaskInDB(MaintenanceTaskBase):
     updated_at: datetime
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class MaintenanceScheduleBase(BaseModel):
     machine_id: int
@@ -49,7 +49,7 @@ class MaintenanceScheduleInDB(MaintenanceScheduleBase):
     tasks: List[MaintenanceTaskInDB] = []
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class MaintenanceLogCreate(BaseModel):
     action: str
@@ -62,7 +62,7 @@ class MaintenanceLogInDB(MaintenanceLogCreate):
     created_at: datetime
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class MaintenancePartBase(BaseModel):
     part_name: str
@@ -79,4 +79,4 @@ class MaintenancePartInDB(MaintenancePartBase):
     task_id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True

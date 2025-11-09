@@ -107,21 +107,39 @@ os.makedirs("static/uploads", exist_ok=True)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Import and include routers
-from .routes import (
-    auth, machine, sensor,
-    prediction, alert,
-    maintenance, metrics,
-    models
-)
+# Import lightweight/safe routers first. ML-heavy routers are imported lazily
+from .routes import auth, machine, sensor, alert, maintenance, metrics
 
+# Try to import ML-heavy routers (they may require large deps like tensorflow/numpy).
+# If they fail to import, skip them so the API can still start in a lightweight mode.
+ml_routes = {}
+try:
+    # These may import services that depend on heavy libraries
+    from .routes import prediction, models, enhanced_prediction, websocket as ws
+    ml_routes['prediction'] = prediction
+    ml_routes['models'] = models
+    ml_routes['enhanced_prediction'] = enhanced_prediction
+    ml_routes['websocket'] = ws
+except Exception as e:
+    logger.warning(f"Skipping ML-heavy routes (prediction/models/enhanced_prediction/websocket): {e}")
+
+# Include safe routers
 app.include_router(auth.router, prefix="/api/auth", tags=["Authentication"])
 app.include_router(machine.router, prefix="/api/machines", tags=["Machines"])
 app.include_router(sensor.router, prefix="/api/sensors", tags=["Sensors"])
-app.include_router(prediction.router, prefix="/api/predictions", tags=["Predictions"])
 app.include_router(alert.router, prefix="/api/alerts", tags=["Alerts"])
 app.include_router(maintenance.router, prefix="/api/maintenance", tags=["Maintenance"])
 app.include_router(metrics.router, prefix="/api/metrics", tags=["Metrics"])
-app.include_router(models.router, prefix="/api/models", tags=["Models"])
+
+# Include ML routers if they were available
+if 'prediction' in ml_routes:
+    app.include_router(ml_routes['prediction'].router, prefix="/api/predictions", tags=["Predictions"])
+if 'models' in ml_routes:
+    app.include_router(ml_routes['models'].router, prefix="/api/models", tags=["Models"])
+if 'enhanced_prediction' in ml_routes:
+    app.include_router(ml_routes['enhanced_prediction'].router, prefix="/api/enhanced-predictions", tags=["Enhanced Predictions"])
+if 'websocket' in ml_routes:
+    app.include_router(ml_routes['websocket'].router, prefix="/api/websocket", tags=["Websocket"])
 
 @app.get("/")
 async def root():

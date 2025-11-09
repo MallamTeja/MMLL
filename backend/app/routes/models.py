@@ -25,7 +25,7 @@ class ModelResponse(BaseModel):
     file_path: str
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 @router.post("/train", response_model=ModelResponse, status_code=status.HTTP_201_CREATED)
 asdef train_model(

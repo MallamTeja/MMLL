@@ -36,7 +36,7 @@ class MachineInDB(MachineBase):
     updated_at: datetime
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class MachineResponse(ResponseBase):
     data: MachineInDB
@@ -106,7 +106,7 @@ class MaintenanceTaskInDB(MaintenanceTaskBase):
     updated_at: datetime
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class MaintenanceTaskResponse(ResponseBase):
     data: MaintenanceTaskInDB
