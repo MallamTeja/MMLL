@@ -30,7 +30,7 @@
     "@types/react-router-dom": "^5.3.3",
     "axios": "^1.6.2",
     "chart.js": "^4.4.1",
-    "date-fns": "^3.6.0",
+    "date-fns": "^4.1.0",
     "formik": "^2.4.5",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
