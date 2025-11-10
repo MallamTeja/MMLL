@@ -1,5 +1,5 @@
 # FastAPI and web framework dependencies
-fastapi==0.95.0
+fastapi==0.121.1
 uvicorn[standard]==0.21.1
 python-multipart==0.0.20
 
